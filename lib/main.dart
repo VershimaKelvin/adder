@@ -18,7 +18,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  int value = 0;
+  int? value;
 
   @override
   void initState() {

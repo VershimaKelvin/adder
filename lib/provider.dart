@@ -8,6 +8,7 @@ class Backend with ChangeNotifier{
     value++;
     setValue(value);
   }
+
   void subtractNumber(int value){
     value--;
     setValue(value);
