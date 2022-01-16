@@ -2,16 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Backend with ChangeNotifier{
+  int value=0;
 
-
-  void addNumber(int value){
-    value++;
-    setValue(value);
+  Backend(){
+    puff();
   }
 
-  void subtractNumber(int value){
+  puff()async{
+    value= await getSavedNumber();
+    notifyListeners();
+  }
+
+  void addNumber(){
+    value++;
+    notifyListeners();
+    setValue();
+
+  }
+
+  void subtractNumber(){
     value--;
-    setValue(value);
+    notifyListeners();
+    setValue();
   }
 
   getSavedNumber()async{
@@ -19,9 +31,10 @@ class Backend with ChangeNotifier{
     return prefs.getInt('value')??0;
   }
 
-  setValue(int value)async{
+  setValue()async{
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setInt('value', value);
+    notifyListeners();
   }
 
 }
