@@ -18,50 +18,42 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  int? value;
-
-  @override
-  void initState() {
-    value=Provider.of<Backend>(context).getSavedNumber();
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(
-            title:const Text('Adder')
-        ),
-        body: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(29.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children:  [
-                  Container(
-                    color: Colors.grey,
-                    child: FlatButton(
-                      onPressed: (){
-                        Provider.of<Backend>(context,listen: false).subtractNumber(value);
-                      },
-                      child: const Text('-'),),
-                  ),
-                  Text(value.toString()),
-                  Container(
-                    color: Colors.grey,
-                    child: FlatButton(
-                      onPressed: (){
-                        Provider.of<Backend>(context,listen: false).addNumber(value);
-                      },
-                      child: const Text('+'),),
-                  ),
-                ],
-              ),
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+          title:const Text('Adder')
+      ),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(29.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children:  [
+                Container(
+                  color: Colors.grey,
+                  child: FlatButton(
+                    onPressed: (){
+                      Provider.of<Backend>(context,listen: false).subtractNumber();
+                    },
+                    child: const Text('-'),),
+                ),
+                Text(Provider.of<Backend>(context).value.toString()),
+                Container(
+                  color: Colors.grey,
+                  child: FlatButton(
+                    onPressed: (){
+                      Provider.of<Backend>(context,listen: false).addNumber();
+                    },
+                    child: const Text('+'),),
+                ),
+              ],
             ),
-          ],
-        ),
-      );
+          ),
+        ],
+      ),
+    );
   }
 }
