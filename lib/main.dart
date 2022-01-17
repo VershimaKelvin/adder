@@ -1,5 +1,6 @@
 import 'package:adder/provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -51,7 +52,28 @@ class _MyAppState extends State<MyApp> {
                 ),
               ],
             ),
+
           ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Container(
+                color: Colors.red,
+                child: FlatButton.icon(
+                    onPressed:null,
+                    icon: const Icon(
+                      Icons.delete,
+                      color: Colors.white,
+                    ),
+                    label: const Text(
+                      'delete',
+                      style: TextStyle(
+                        color: Colors.white
+                      ),
+                    )),
+              )
+            ],
+          )
         ],
       ),
     );
