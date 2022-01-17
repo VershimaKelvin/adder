@@ -37,4 +37,10 @@ class Backend with ChangeNotifier{
     notifyListeners();
   }
 
+  void deletePreferences()async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.remove('value');
+    notifyListeners();
+  }
+
 }

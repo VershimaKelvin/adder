@@ -60,7 +60,9 @@ class _MyAppState extends State<MyApp> {
               Container(
                 color: Colors.red,
                 child: FlatButton.icon(
-                    onPressed:null,
+                    onPressed:(){
+                      Provider.of<Backend>(context).deletePreferences();
+                    },
                     icon: const Icon(
                       Icons.delete,
                       color: Colors.white,
