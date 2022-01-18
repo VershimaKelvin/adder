@@ -42,9 +42,6 @@ class _MyAppState extends State<MyApp> {
                 ),
                 Text(Provider.of<Backend>(context).value.toString()),
                 Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12)
-                  ),
                   color: Colors.grey,
                   child: TextButton(
                     onPressed: (){
@@ -59,22 +56,29 @@ class _MyAppState extends State<MyApp> {
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              Container(
-                color: Colors.red,
-                child: TextButton.icon(
-                    onPressed:(){
-                      Provider.of<Backend>(context,listen: false).deletePreferences();
-                    },
-                    icon: const Icon(
-                      Icons.delete,
-                      color: Colors.white,
-                    ),
-                    label: const Text(
-                      'clear',
-                      style: TextStyle(
-                        color: Colors.white
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.red,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+
+                  child: TextButton.icon(
+                      onPressed:(){
+                        Provider.of<Backend>(context,listen: false).deletePreferences();
+                      },
+                      icon: const Icon(
+                        Icons.delete,
+                        color: Colors.white,
                       ),
-                    )),
+                      label: const Text(
+                        'clear',
+                        style: TextStyle(
+                          color: Colors.white
+                        ),
+                      )),
+                ),
               )
             ],
           )
