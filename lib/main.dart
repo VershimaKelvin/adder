@@ -2,13 +2,12 @@ import 'package:adder/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
   runApp(  MaterialApp(
       home:ChangeNotifierProvider<Backend>(
           create: (BuildContext context)=>Backend(),
-        child: MyApp())));
+        child: const MyApp())));
 }
 
 class MyApp extends StatefulWidget {
@@ -35,7 +34,7 @@ class _MyAppState extends State<MyApp> {
               children:  [
                 Container(
                   color: Colors.grey,
-                  child: FlatButton(
+                  child: TextButton(
                     onPressed: (){
                       Provider.of<Backend>(context,listen: false).subtractNumber();
                     },
@@ -43,8 +42,11 @@ class _MyAppState extends State<MyApp> {
                 ),
                 Text(Provider.of<Backend>(context).value.toString()),
                 Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12)
+                  ),
                   color: Colors.grey,
-                  child: FlatButton(
+                  child: TextButton(
                     onPressed: (){
                       Provider.of<Backend>(context,listen: false).addNumber();
                     },
@@ -59,16 +61,16 @@ class _MyAppState extends State<MyApp> {
             children: [
               Container(
                 color: Colors.red,
-                child: FlatButton.icon(
+                child: TextButton.icon(
                     onPressed:(){
-                      Provider.of<Backend>(context).deletePreferences();
+                      Provider.of<Backend>(context,listen: false).deletePreferences();
                     },
                     icon: const Icon(
                       Icons.delete,
                       color: Colors.white,
                     ),
                     label: const Text(
-                      'delete',
+                      'clear',
                       style: TextStyle(
                         color: Colors.white
                       ),
